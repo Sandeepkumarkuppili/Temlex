@@ -1,0 +1,85 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<title>Register</title>
+</head>
+<style type="text/css">
+	body{
+		background: "bg.jpg";
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 100%;
+		background-size: cover;
+		font-family: Arial;
+		}
+	input{
+		height: 40px;
+		border-radius: 10px;
+		width: 500px;
+	}
+	.block{
+		background-color: white;
+		text-align: left;
+		width:500px;
+		margin: auto;
+		border-radius: 10px;
+  		border: 3px solid #73AD21;
+  		padding: 10px;
+	}
+	button{
+		background-color: #73AD21  ;
+		height: 50px;
+		width: 100px;
+		margin: auto;
+		display: block;
+		border-radius: 15px;
+	}
+</style>
+<body background="bg.jpg">
+	<h1 align="center">Register</h1>
+	<div class="block" align="center" ng-app="myApp" ng-controller="myCtrl">
+	
+	<label ><b>User Name</b></label><br>
+    <input type="text" placeholder="Enter User name" id="uname" required><br>
+
+    <label ><b>Email</b></label><br>
+    <input type="email" placeholder="Enter Email" id="email" required><br>
+
+    <label ><b>Password</b></label><br>
+    <input type="password" placeholder="EnterPassword" id="pass" required><br>
+
+    <label ><b>Organisation</b></label><br>
+    <input type="text" placeholder="Enter Organisation Name" id="org" required><br>
+
+    <label><b>Address</b></label><br>
+    <input type="text" placeholder="Door no" id="dno" required style="width: 250px"><input type="text" placeholder="Street Name" id="sname" required style="width: 250px">
+    <input type="text" placeholder="city" id="city" required style="width: 250px"><input type="number" placeholder="Pin Code" id="pin" required style="width: 250px">
+
+    <label><input type="checkbox" id="terms" align="left" style="height: 25px; width: 25px;">I Agree to the Terms & conditions</label><br>
+
+    <input type="button" id="save" value="Register" ng-click="showval();">
+
+    username={{user}}
+    Email={{email}}
+    organisation={{org}}
+    address={{dno+","+sname+" "+city+","+pin}}
+
+	</div>
+
+	<script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope) {
+            $scope.showval = function () {
+                $scope.user=angular.element(document.querySelector("#uname")).val();
+                $scope.email=angular.element(document.querySelector("#email")).val();
+                $scope.org=angular.element(document.querySelector("#org")).val();
+                $scope.dno=angular.element(document.querySelector("#dno")).val();
+                $scope.sname=angular.element(document.querySelector("#sname")).val();
+                $scope.city=angular.element(document.querySelector("#city")).val();
+                $scope.pin=angular.element(document.querySelector("#pin")).val();
+
+            };
+        });
+    </script>
+</body>
+</html>
